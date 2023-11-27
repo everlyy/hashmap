@@ -1,5 +1,6 @@
 #include "hashmap.h"
 
+#include <assert.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -54,6 +55,8 @@ int main(void) {
     int64_t value;
     if(hashmap_get(&hm, "b", (void**)&value))
         printf("Value at key \"b\" = %ld\n", value);
+    else
+        assert(!"Couldn't find key \"b\"");
 
     hashmap_free(&hm);
     return 0;
